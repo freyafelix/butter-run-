@@ -51,9 +51,9 @@ knifeImg.src =
     'data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjIwMCIgd2lkdGg9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iMTIwIiB5PSI4MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjOEI0NTEzIiBzdHJva2U9IiMwMDAiIHJ4PSI1Ii8+PHBvbHlnb24gcG9pbnRzPSI0MCA3MCAxMjAgODAgMTIwIDExMCA0MCAxMDAiIGZpbGw9IiNDMEMwQzAiIHN0cm9rZT0iIzAwMCIvPjxsaW5lIHgxPSI0NSIgeTE9Ijc1IiB4Mj0iMTE1IiB5Mj0iODMiIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+';
 
 const warningSound = new Audio('https://www.fesliyanstudios.com/play-mp3/387');
-const inflateSound = new Audio('https://www.fesliyanstudios.com/play-mp3/1012');
+const inflateSound = new Audio('https://www.fesliyanstudios.com/play-mp3/6555');
 const cutSound = new Audio('https://www.fesliyanstudios.com/play-mp3/4565');
-const victorySound = new Audio('https://www.fesliyanstudios.com/play-mp3/6843');
+const victorySound = new Audio('https://freyafelix.github.io/game-assets/');
 const menuBackgroundMusic = new Audio('https://www.bensound.com/bensound-music/bensound-sunny.mp3');
 
 let duck = {
@@ -181,18 +181,26 @@ function updateGame() {
 
     if (score >= LEVELS[currentLevel - 1].winScore) {
         if (currentLevel < LEVELS.length) {
-            currentLevel++;
-            setTimeout(() => {
-                victorySound.play();
-                victoryMessage.style.display = 'block';
-                gameContainer.style.background = 'lightgreen';
-                setTimeout(startGame, 1500);
-            }, 500);
+            showVictoryMessage();
         } else {
             victorySound.play();
             endGame(true);
         }
     }
+}
+
+function showVictoryMessage() {
+    isGameRunning = false;
+    victorySound.play();
+    victoryMessage.style.display = 'block';
+    gameContainer.style.background = 'lightgreen';
+    
+    setTimeout(() => {
+        victoryMessage.style.display = 'none';
+        gameContainer.style.background = '';
+        currentLevel++;
+        startGame();
+    }, 3000); // 3秒后进入下一关
 }
 
 function checkCollision(rect1, rect2) {
