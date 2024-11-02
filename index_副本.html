@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄油小人快跑</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mainMenu">
+        <img id="duckImage" src="https://i.imgur.com/bTLUxQ0.png" alt="小人">
+        <button id="startGameButton" class="menu-button">开始游戏</button>
+        <button id="viewLevelsButton" class="menu-button">查看关卡</button>
+        <div id="volumeControl">
+            <label for="volumeRange">🎵 音量调节</label>
+            <input type="range" id="volumeRange" min="0" max="1" step="0.1" value="0.5">
+        </div>
+    </div>
+    <div id="levelsContainer">
+        <h2 id="levelsTitle">黄油小人大冒险</h2>
+        <ul id="levelsList"></ul>
+        <button id="backToMainMenuButton">返回主菜单</button>
+    </div>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <button id="startButton">Start Game</button>
+        <button id="pauseButton">暂停</button>
+        <button id="backToMainMenuButtonGame">返回主菜单</button>
+        <div id="warningMessage" class="warning">⚠️ 小人过大或过小，快吃刀子或黄油调整大小！</div>
+        <div id="victoryMessage" class="victory">🎉 胜利！ 🎉</div>
+        <div id="gameOverMessage" class="game-over">💀 游戏结束！ 💀</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

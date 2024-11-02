@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    background: linear-gradient(
+        45deg, 
+        #FFFDD0,  /* 奶油色 */
+        #FFF8DC,  /* 玉米丝色 */
+        #FFE5B4,  /* 桃色 */
+        #FFD700,  /* 金色 */
+        #FAFAD2   /* 浅金菊黄 */
+    );
+    background-size: 300% 300%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+#mainMenu {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2rem;
+    border-radius: 40px;
+    box-shadow: 
+        0 10px 30px rgba(255, 215, 0, 0.2),
+        inset 0 -8px 20px rgba(255, 223, 186, 0.9);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+    backdrop-filter: blur(10px);
+}
+
+#duckImage {
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+    animation: wiggle 3s ease-in-out infinite;
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.4));
+}
+
+h1 {
+    color: #DAA520;
+    text-shadow: 
+        3px 3px 0 #FFF8DC,
+        -1px -1px 0 #FFF8DC,
+        1px -1px 0 #FFF8DC,
+        -1px 1px 0 #FFF8DC,
+        1px 1px 0 #FFF8DC;
+    font-size: 3rem;
+    margin: 1rem 0;
+    letter-spacing: 2px;
+}
+
+.menu-button {
+    background: linear-gradient(145deg, #FFD700, #DAA520);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 15px 30px;
+    margin: 15px 0;
+    font-size: 1.4rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    cursor: pointer;
+    width: 80%;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 0 #DAA520,
+        0 15px 20px rgba(218, 165, 32, 0.3);
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:hover {
+    transform: translateY(4px);
+    box-shadow: 
+        0 4px 0 #DAA520,
+        0 8px 15px rgba(218, 165, 32, 0.2);
+}
+
+.menu-button::before {
+    content: "🧈";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#volumeControl {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: inset 0 2px 10px rgba(255, 215, 0, 0.2);
+}
+
+#volumeControl label {
+    font-size: 1.2rem;
+    color: #DAA520;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#volumeRange {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #FFD700, #DAA520);
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#volumeRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFD700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+    border: 3px solid #DAA520;
+}
+
+#volumeRange::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #FFF8DC;
+}
+
+#gameContainer {
+    display: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 860px;
+    width: 100%;
+}
+
+#levelsContainer {
+    display: none;
+    background: linear-gradient(135deg, #FFE5B4, #FFD700);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    max-width: 860px;
+    margin: 20px auto;
+}
+
+#levelsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0;
+}
+
+#levelsList li {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    list-style: none;
+    text-align: center;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 1.2em;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite;
+}
+
+#levelsList li:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #FFE5B4, #FFD700);
+    color: white;
+}
+
+#pauseButton, #backToMainMenuButtonGame {
+    position: absolute;
+    top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#pauseButton {
+    right: 140px;
+}
+
+#backToMainMenuButtonGame {
+    right: 20px;
+}
+
+#pauseButton:hover, #backToMainMenuButtonGame:hover {
+    background: #FF8E8E;
+}
+
+#backToMainMenuButton {
+    display: block;
+    margin: 40px auto 0;
+    padding: 20px 40px;
+    font-size: 1.5em;
+    font-family: 'Bubblegum Sans', cursive;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#levelsTitle {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-align: center;
+    color: #FF6B6B;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 5em;
+    margin: 0 auto;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
